@@ -11,34 +11,39 @@ import MapKit
 
 class CitiesTableViewController: UITableViewController {
     
-    var cities = [City]() {
-        didSet{
-            dispatch_async(dispatch_get_main_queue(), {
-                print("cities ok: \(self.cities)")
-                self.tableView.reloadData()
-                return
-            })
-        }
-    }
+    var cities = [City]()
     
     let store = OpenWeatherMapStore()
     
-    var searchCoordinate: CLLocationCoordinate2D? {
-        didSet {
+    var searchCoordinate: CLLocationCoordinate2D?
+    
+    private struct Storyboard {
+        static let CellReuseIdentifier = "City Name"
+    }
+    
+    // MARK: - View Controller Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Load sotre data
+        if searchCoordinate != nil {
             store.fetchCitiesInCycle(15, lat: searchCoordinate!.latitude, lon: searchCoordinate!.longitude) {
                 (citiesResult) -> Void in
                 switch citiesResult {
                 case let .Success(cities):
-                    self.cities = cities.sort({$0.name < $1.name})
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.cities = cities.sort({$0.name < $1.name})
+                        self.tableView.reloadData()
+                        return
+                    })
+                    
                 case let .Failure(error):
+                    // possibly display an error message
                     print("Error fetching cities weather conditions: \(error)")
                 }
             }
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -63,10 +68,11 @@ class CitiesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("City Name Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
         
         let city = cities[indexPath.row]
         cell.textLabel?.text = city.name
+        cell.detailTextLabel?.text = String(city.temp)
 
         return cell
     }

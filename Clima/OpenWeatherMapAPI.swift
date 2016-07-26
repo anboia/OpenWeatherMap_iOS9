@@ -66,6 +66,7 @@ struct OpenWeatherMapAPI {
             main = json["main"] as? [NSObject:AnyObject],
             tempMax = main["temp_max"] as? Double,
             tempMin = main["temp_min"] as? Double,
+            temp = main["temp"] as? Double,
         
             weather = json["weather"] as? [[NSObject:AnyObject]],
             description = weather[0]["description"] as? String else {
@@ -73,7 +74,7 @@ struct OpenWeatherMapAPI {
                 return nil
         }
         
-        return City(name: name, tempMax: tempMax, tempMin: tempMin, description: description)
+        return City(name: name, tempMax: tempMax, tempMin: tempMin, temp: temp, description: description)
     }
     
     static func citiesFromJSONData(data: NSData) -> CitiesResult {

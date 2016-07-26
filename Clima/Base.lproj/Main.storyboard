@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2sw-Un-SgZ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Map View Controller" customClass="MapViewController" customModule="Clima" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,162 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rix-gx-S8U">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="9q6-MQ-u4w" appends="YES" id="Y1P-uE-hI5"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rix-gx-S8U" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="CTW-CF-8j6"/>
+                            <constraint firstItem="Rix-gx-S8U" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Lfh-Vj-28v"/>
+                            <constraint firstItem="Rix-gx-S8U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QET-eq-TGZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Rix-gx-S8U" secondAttribute="trailing" id="SCK-OG-pYP"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Mapa" id="RGw-1K-iQO">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Buscar" style="done" id="ZSA-y7-XHF">
+                            <connections>
+                                <action selector="buscar:" destination="BYZ-38-t0r" id="kqN-ej-soD"/>
+                                <segue destination="Sjh-9O-FP2" kind="show" identifier="Show Cities" id="0PZ-xc-ZN0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="Rix-gx-S8U" id="lLl-sv-K6a"/>
+                        <outlet property="searchButton" destination="ZSA-y7-XHF" id="vfL-01-8Ri"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9q6-MQ-u4w">
+                    <connections>
+                        <action selector="searchLocation:" destination="BYZ-38-t0r" id="NdR-Pc-xpt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="907" y="1868"/>
+        </scene>
+        <!--Cities Table View Controller-->
+        <scene sceneID="EcC-fh-MB7">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Sjh-9O-FP2" userLabel="Cities Table View Controller" customClass="CitiesTableViewController" customModule="Clima" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PLC-yJ-Xt3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="City Name Cell" textLabel="tS7-jf-QDn" style="IBUITableViewCellStyleDefault" id="ztT-Ks-oc7">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ztT-Ks-oc7" id="nHX-mx-Yhi">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tS7-jf-QDn">
+                                            <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="bOd-Sy-lnn" kind="show" identifier="Show City Detail" id="azc-eO-uOO"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Sjh-9O-FP2" id="FTp-ht-8vw"/>
+                            <outlet property="delegate" destination="Sjh-9O-FP2" id="Lcr-JC-weV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cidades" id="MrH-cm-Yvq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Npd-Ay-2aL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737" y="1868"/>
+        </scene>
+        <!--City Detail View Controller-->
+        <scene sceneID="oZJ-JE-ybz">
+            <objects>
+                <viewController id="bOd-Sy-lnn" userLabel="City Detail View Controller" customClass="CityDetailViewController" customModule="Clima" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MTi-LK-Fob"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gs8-xi-BmS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ins-qC-Qtr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recife" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wod-kX-6MV">
+                                <rect key="frame" x="276" y="261" width="48" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura mínima: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3Q-a5-SQs">
+                                <rect key="frame" x="217" y="318" width="166" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura máxima: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTS-uJ-2yb">
+                                <rect key="frame" x="215" y="289" width="171" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V91-Vn-I5I">
+                                <rect key="frame" x="274" y="347" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f3Q-a5-SQs" firstAttribute="top" secondItem="BTS-uJ-2yb" secondAttribute="bottom" constant="8" symbolic="YES" id="7LN-08-4yS"/>
+                            <constraint firstItem="V91-Vn-I5I" firstAttribute="top" secondItem="f3Q-a5-SQs" secondAttribute="bottom" constant="8" symbolic="YES" id="CIz-WM-51K"/>
+                            <constraint firstItem="f3Q-a5-SQs" firstAttribute="centerX" secondItem="V91-Vn-I5I" secondAttribute="centerX" id="QJf-Ex-JFZ"/>
+                            <constraint firstItem="Wod-kX-6MV" firstAttribute="centerX" secondItem="ins-qC-Qtr" secondAttribute="centerX" id="UET-jL-96M"/>
+                            <constraint firstItem="Wod-kX-6MV" firstAttribute="centerX" secondItem="BTS-uJ-2yb" secondAttribute="centerX" id="eC9-F9-vaw"/>
+                            <constraint firstItem="BTS-uJ-2yb" firstAttribute="centerY" secondItem="ins-qC-Qtr" secondAttribute="centerY" id="fzf-Ow-ch0"/>
+                            <constraint firstItem="BTS-uJ-2yb" firstAttribute="centerX" secondItem="f3Q-a5-SQs" secondAttribute="centerX" id="sFF-AJ-tJd"/>
+                            <constraint firstItem="BTS-uJ-2yb" firstAttribute="top" secondItem="Wod-kX-6MV" secondAttribute="bottom" constant="7" id="uV7-P1-4wm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Clima" id="cT0-Ma-ylD"/>
+                    <connections>
+                        <outlet property="desc" destination="V91-Vn-I5I" id="RQN-jA-9Jd"/>
+                        <outlet property="name" destination="Wod-kX-6MV" id="fC4-Og-H34"/>
+                        <outlet property="temp_max" destination="BTS-uJ-2yb" id="Cag-iE-3oH"/>
+                        <outlet property="temp_min" destination="f3Q-a5-SQs" id="896-I2-uVL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ljY-ON-ktp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2544" y="1868"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WjI-7w-FRT">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4tw-Gn-woM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="2sw-Un-SgZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mO4-pK-1oP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="H3s-hv-Zat"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="124" y="1863"/>
         </scene>
     </scenes>
 </document>

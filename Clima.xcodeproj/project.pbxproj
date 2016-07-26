@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		468EBB181D4694D5009A63A2 /* CitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468EBB171D4694D5009A63A2 /* CitiesTableViewController.swift */; };
+		468EBB1A1D470D76009A63A2 /* OpenWeatherMapAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468EBB191D470D76009A63A2 /* OpenWeatherMapAPI.swift */; };
+		468EBB1D1D473F3B009A63A2 /* OpenWeatherMapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468EBB1B1D473B2B009A63A2 /* OpenWeatherMapStore.swift */; };
+		468EBB1F1D475336009A63A2 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468EBB1E1D475336009A63A2 /* City.swift */; };
+		468EBB211D479837009A63A2 /* CityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468EBB201D479837009A63A2 /* CityDetailViewController.swift */; };
 		46BCA19D1D43C71300CEF066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BCA19C1D43C71300CEF066 /* AppDelegate.swift */; };
-		46BCA19F1D43C71300CEF066 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BCA19E1D43C71300CEF066 /* ViewController.swift */; };
+		46BCA19F1D43C71300CEF066 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BCA19E1D43C71300CEF066 /* MapViewController.swift */; };
 		46BCA1A21D43C71300CEF066 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BCA1A01D43C71300CEF066 /* Main.storyboard */; };
 		46BCA1A41D43C71300CEF066 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BCA1A31D43C71300CEF066 /* Assets.xcassets */; };
 		46BCA1A71D43C71300CEF066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BCA1A51D43C71300CEF066 /* LaunchScreen.storyboard */; };
+		46BCA1AF1D43CB5700CEF066 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BCA1AE1D43CB5700CEF066 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		468EBB171D4694D5009A63A2 /* CitiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
+		468EBB191D470D76009A63A2 /* OpenWeatherMapAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapAPI.swift; sourceTree = "<group>"; };
+		468EBB1B1D473B2B009A63A2 /* OpenWeatherMapStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapStore.swift; sourceTree = "<group>"; };
+		468EBB1E1D475336009A63A2 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		468EBB201D479837009A63A2 /* CityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityDetailViewController.swift; sourceTree = "<group>"; };
 		46BCA1991D43C71300CEF066 /* Clima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BCA19C1D43C71300CEF066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		46BCA19E1D43C71300CEF066 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		46BCA19E1D43C71300CEF066 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		46BCA1A11D43C71300CEF066 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		46BCA1A31D43C71300CEF066 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46BCA1A61D43C71300CEF066 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		46BCA1A81D43C71300CEF066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46BCA1AE1D43CB5700CEF066 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,15 +41,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46BCA1AF1D43CB5700CEF066 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		468EBB221D479886009A63A2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46BCA19E1D43C71300CEF066 /* MapViewController.swift */,
+				468EBB171D4694D5009A63A2 /* CitiesTableViewController.swift */,
+				468EBB201D479837009A63A2 /* CityDetailViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		468EBB231D4798AD009A63A2 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				468EBB1E1D475336009A63A2 /* City.swift */,
+				468EBB1B1D473B2B009A63A2 /* OpenWeatherMapStore.swift */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		468EBB241D4798C3009A63A2 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				468EBB191D470D76009A63A2 /* OpenWeatherMapAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		46BCA1901D43C71300CEF066 = {
 			isa = PBXGroup;
 			children = (
+				46BCA1AE1D43CB5700CEF066 /* MapKit.framework */,
 				46BCA19B1D43C71300CEF066 /* Clima */,
 				46BCA19A1D43C71300CEF066 /* Products */,
 			);
@@ -54,14 +95,24 @@
 		46BCA19B1D43C71300CEF066 /* Clima */ = {
 			isa = PBXGroup;
 			children = (
-				46BCA19C1D43C71300CEF066 /* AppDelegate.swift */,
-				46BCA19E1D43C71300CEF066 /* ViewController.swift */,
 				46BCA1A01D43C71300CEF066 /* Main.storyboard */,
+				468EBB241D4798C3009A63A2 /* API */,
+				468EBB231D4798AD009A63A2 /* Store */,
+				468EBB221D479886009A63A2 /* Controller */,
+				46BCA1B01D447FE600CEF066 /* Supporting Files */,
+			);
+			path = Clima;
+			sourceTree = "<group>";
+		};
+		46BCA1B01D447FE600CEF066 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46BCA19C1D43C71300CEF066 /* AppDelegate.swift */,
 				46BCA1A31D43C71300CEF066 /* Assets.xcassets */,
 				46BCA1A51D43C71300CEF066 /* LaunchScreen.storyboard */,
 				46BCA1A81D43C71300CEF066 /* Info.plist */,
 			);
-			path = Clima;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +147,7 @@
 				TargetAttributes = {
 					46BCA1981D43C71300CEF066 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 7BLCY9EDJ2;
 					};
 				};
 			};
@@ -135,8 +187,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46BCA19F1D43C71300CEF066 /* ViewController.swift in Sources */,
+				468EBB1A1D470D76009A63A2 /* OpenWeatherMapAPI.swift in Sources */,
+				46BCA19F1D43C71300CEF066 /* MapViewController.swift in Sources */,
+				468EBB1D1D473F3B009A63A2 /* OpenWeatherMapStore.swift in Sources */,
+				468EBB211D479837009A63A2 /* CityDetailViewController.swift in Sources */,
+				468EBB181D4694D5009A63A2 /* CitiesTableViewController.swift in Sources */,
 				46BCA19D1D43C71300CEF066 /* AppDelegate.swift in Sources */,
+				468EBB1F1D475336009A63A2 /* City.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Clima/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andre.saboia.Clima;
@@ -262,6 +320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Clima/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andre.saboia.Clima;
@@ -288,6 +347,7 @@
 				46BCA1AD1D43C71300CEF066 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
